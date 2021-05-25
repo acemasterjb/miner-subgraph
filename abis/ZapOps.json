@@ -1,0 +1,326 @@
+[
+  {
+    "constant": false,
+    "inputs": [
+      { "name": "_spender", "type": "address" },
+      { "name": "_amount", "type": "uint256" }
+    ],
+    "name": "approve",
+    "outputs": [{ "name": "", "type": "bool" }],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "constant": false,
+    "inputs": [],
+    "name": "depositStake",
+    "outputs": [],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "constant": false,
+    "inputs": [
+      { "name": "_from", "type": "address" },
+      { "name": "_to", "type": "address" },
+      { "name": "_amount", "type": "uint256" }
+    ],
+    "name": "transferFrom",
+    "outputs": [{ "name": "", "type": "bool" }],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "constant": false,
+    "inputs": [{ "name": "_propNewZapAddress", "type": "address" }],
+    "name": "proposeFork",
+    "outputs": [],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [
+      { "name": "_user", "type": "address" },
+      { "name": "_block", "type": "uint256" }
+    ],
+    "name": "getBalanceAt",
+    "outputs": [{ "name": "", "type": "uint256" }],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": false,
+    "inputs": [],
+    "name": "requestStakingWithdraw",
+    "outputs": [],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "constant": false,
+    "inputs": [
+      { "name": "_from", "type": "address" },
+      { "name": "_to", "type": "address" },
+      { "name": "_amount", "type": "uint256" }
+    ],
+    "name": "doTransfer",
+    "outputs": [],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "constant": false,
+    "inputs": [
+      { "name": "_c_sapi", "type": "string" },
+      { "name": "_c_symbol", "type": "string" },
+      { "name": "_granularity", "type": "uint256" },
+      { "name": "_tip", "type": "uint256" }
+    ],
+    "name": "requestData",
+    "outputs": [],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [],
+    "name": "getNewCurrentVariables",
+    "outputs": [
+      { "name": "_challenge", "type": "bytes32" },
+      { "name": "_requestIds", "type": "uint256[5]" },
+      { "name": "_difficutly", "type": "uint256" },
+      { "name": "_tip", "type": "uint256" }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": false,
+    "inputs": [{ "name": "_disputeId", "type": "uint256" }],
+    "name": "tallyVotes",
+    "outputs": [],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "constant": false,
+    "inputs": [
+      { "name": "_nonce", "type": "string" },
+      { "name": "_requestId", "type": "uint256" },
+      { "name": "_value", "type": "uint256" }
+    ],
+    "name": "submitMiningSolution",
+    "outputs": [],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [{ "name": "_user", "type": "address" }],
+    "name": "balanceOf",
+    "outputs": [{ "name": "balance", "type": "uint256" }],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": false,
+    "inputs": [
+      { "name": "_requestId", "type": "uint256" },
+      { "name": "_tip", "type": "uint256" }
+    ],
+    "name": "addTip",
+    "outputs": [],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "constant": false,
+    "inputs": [
+      { "name": "_requestId", "type": "uint256" },
+      { "name": "_timestamp", "type": "uint256" },
+      { "name": "_minerIndex", "type": "uint256" }
+    ],
+    "name": "beginDispute",
+    "outputs": [],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [
+      { "name": "_user", "type": "address" },
+      { "name": "_amount", "type": "uint256" }
+    ],
+    "name": "allowedToTrade",
+    "outputs": [{ "name": "", "type": "bool" }],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": false,
+    "inputs": [
+      { "name": "_to", "type": "address" },
+      { "name": "_amount", "type": "uint256" }
+    ],
+    "name": "transfer",
+    "outputs": [{ "name": "", "type": "bool" }],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "constant": false,
+    "inputs": [
+      { "name": "_address", "type": "address" },
+      { "name": "_amount", "type": "uint256" }
+    ],
+    "name": "theLazyCoon",
+    "outputs": [],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "constant": false,
+    "inputs": [],
+    "name": "withdrawStake",
+    "outputs": [],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "constant": false,
+    "inputs": [
+      { "name": "_disputeId", "type": "uint256" },
+      { "name": "_supportsDispute", "type": "bool" }
+    ],
+    "name": "vote",
+    "outputs": [],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "constant": false,
+    "inputs": [
+      { "name": "_user", "type": "address" },
+      { "name": "_value", "type": "uint256" }
+    ],
+    "name": "updateBalanceAtNow",
+    "outputs": [],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [],
+    "name": "token",
+    "outputs": [{ "name": "", "type": "address" }],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [{ "name": "zapToken", "type": "address" }],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "constructor"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      { "indexed": true, "name": "_disputeId", "type": "uint256" },
+      { "indexed": true, "name": "_requestId", "type": "uint256" },
+      { "indexed": false, "name": "_timestamp", "type": "uint256" },
+      { "indexed": false, "name": "_miner", "type": "address" }
+    ],
+    "name": "NewDispute",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      { "indexed": false, "name": "_currentChallenge", "type": "bytes32" },
+      { "indexed": true, "name": "_currentRequestId", "type": "uint256" },
+      { "indexed": false, "name": "_difficulty", "type": "uint256" },
+      { "indexed": false, "name": "_multiplier", "type": "uint256" },
+      { "indexed": false, "name": "_query", "type": "string" },
+      { "indexed": false, "name": "_totalTips", "type": "uint256" }
+    ],
+    "name": "NewChallenge",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      { "indexed": true, "name": "_sender", "type": "address" },
+      { "indexed": true, "name": "_requestId", "type": "uint256" },
+      { "indexed": false, "name": "_tip", "type": "uint256" },
+      { "indexed": false, "name": "_totalTips", "type": "uint256" }
+    ],
+    "name": "TipAdded",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      { "indexed": true, "name": "_requestId", "type": "uint256" },
+      { "indexed": false, "name": "_query", "type": "string" },
+      { "indexed": false, "name": "_onDeckQueryHash", "type": "bytes32" },
+      { "indexed": false, "name": "_onDeckTotalTips", "type": "uint256" }
+    ],
+    "name": "NewRequestOnDeck",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      { "indexed": true, "name": "_sender", "type": "address" },
+      { "indexed": false, "name": "_query", "type": "string" },
+      { "indexed": false, "name": "_querySymbol", "type": "string" },
+      { "indexed": false, "name": "_granularity", "type": "uint256" },
+      { "indexed": true, "name": "_requestId", "type": "uint256" },
+      { "indexed": false, "name": "_totalTips", "type": "uint256" }
+    ],
+    "name": "DataRequested",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      { "indexed": true, "name": "_owner", "type": "address" },
+      { "indexed": true, "name": "_spender", "type": "address" },
+      { "indexed": false, "name": "_value", "type": "uint256" }
+    ],
+    "name": "Approval",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      { "indexed": true, "name": "_from", "type": "address" },
+      { "indexed": true, "name": "_to", "type": "address" },
+      { "indexed": false, "name": "_value", "type": "uint256" }
+    ],
+    "name": "Transfer",
+    "type": "event"
+  }
+]

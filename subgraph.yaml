@@ -1,0 +1,128 @@
+specVersion: 0.0.2
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum/contract
+    name: ZapLibrary
+    network: chapel
+    source:
+      address: "0x8Eb7620478F710089d11136571E18bd75ae32520"
+      abi: ZapLibrary
+      startBlock: 9130508
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.4
+      language: wasm/assemblyscript
+      entities:
+        - TipAdded
+        - DataRequested
+        - NewChallenge
+        - NewRequestOnDeck
+        - NewValue
+        - NonceSubmitted
+        - OwnershipTransferred
+      abis:
+        - name: ZapLibrary
+          file: ./abis/ZapLibrary.json
+      eventHandlers:
+        - event: TipAdded(indexed address,indexed uint256,uint256,uint256)
+          handler: handleTipAdded
+        - event: DataRequested(indexed address,string,string,uint256,indexed uint256,uint256)
+          handler: handleDataRequested
+        - event: NewChallenge(bytes32,indexed uint256,uint256,uint256,string,uint256)
+          handler: handleNewChallenge
+        - event: NewRequestOnDeck(indexed uint256,string,bytes32,uint256)
+          handler: handleNewRequestOnDeck
+        - event: NewValue(indexed uint256,uint256,uint256,uint256,bytes32)
+          handler: handleNewValue
+        - event: NonceSubmitted(indexed address,string,indexed uint256,uint256,bytes32)
+          handler: handleNonceSubmitted
+        - event: OwnershipTransferred(indexed address,indexed address)
+          handler: handleOwnershipTransferred
+      file: ./src/mapping.ts
+  - kind: ethereum/contract
+    name: ZapDispute
+    network: chapel
+    source:
+      address: "0xb1387CF1a1364B277FdeD5eB1460407Fc04E51E6"
+      abi: ZapDispute
+      startBlock: 9130455
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.4
+      language: wasm/assemblyscript
+      entities:
+        - NewDispute
+        - Voted
+        - DisputeVoteTallied
+        - NewZapAddress
+      abis:
+        - name: ZapDispute
+          file: ./abis/ZapDispute.json
+      eventHandlers:
+        - event: NewDispute(indexed uint256,indexed uint256,uint256,address)
+          handler: handleNewDispute
+        - event: Voted(indexed uint256,bool,indexed address)
+          handler: handleVoted
+        - event: DisputeVoteTallied(indexed uint256,int256,indexed address,address,bool)
+          handler: handleDisputeVoteTallied
+      file: ./src/mapping.ts
+  - kind: ethereum/contract
+    name: ZapMaster
+    network: chapel
+    source:
+      address: "0x1BDd5e115a59444F6e83AbDee1A85c126b3Df03D"
+      abi: ZapMaster
+      startBlock: 9130603
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.4
+      language: wasm/assemblyscript
+      entities:
+        - NewZapAddress
+      abis:
+        - name: ZapMaster
+          file: ./abis/ZapMaster.json
+      eventHandlers:
+        - event: NewZapAddress(address)
+          handler: handleNewZapAddress
+      file: ./src/mapping.ts
+  - kind: ethereum/contract
+    name: ZapOps
+    network: chapel
+    source:
+      address: "0x7C221756253E1d0f0818225aAeE7de0b754fA73e"
+      abi: ZapOps
+      startBlock: 9130579
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.4
+      language: wasm/assemblyscript
+      entities:
+        - NewDispute
+        - NewChallenge
+        - TipAdded
+        - NewRequestOnDeck
+        - DataRequested
+        - Approval
+        - Transfer
+      abis:
+        - name: ZapOps
+          file: ./abis/ZapOps.json
+      eventHandlers:
+        - event: NewDispute(indexed uint256,indexed uint256,uint256,address)
+          handler: handleNewDispute
+        - event: NewChallenge(bytes32,indexed uint256,uint256,uint256,string,uint256)
+          handler: handleNewChallenge
+        - event: TipAdded(indexed address,indexed uint256,uint256,uint256)
+          handler: handleTipAdded
+        - event: NewRequestOnDeck(indexed uint256,string,bytes32,uint256)
+          handler: handleNewRequestOnDeck
+        - event: DataRequested(indexed address,string,string,uint256,indexed uint256,uint256)
+          handler: handleDataRequested
+        - event: Approval(indexed address,indexed address,uint256)
+          handler: handleApproval
+        - event: Transfer(indexed address,indexed address,uint256)
+          handler: handleTransfer
+      file: ./src/mapping.ts
+
