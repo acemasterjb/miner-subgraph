@@ -24,6 +24,7 @@ npm install -g @graphprotocol/graph-cli
 ## Deployment
 
 **IMPORTANT**
+
 Change the `github_user/subgraph_name` in the `package.json` if you would like to deploy from your Grpahh dashboard.
 
 You will find the instances of this in the scripts property of `package.json`.
