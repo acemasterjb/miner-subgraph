@@ -3,12 +3,12 @@ schema:
   file: ./schema.graphql
 dataSources:
   - kind: ethereum/contract
-    name: ZapLibrary
+    name: Oracle
     network: chapel
     source:
-      address: "0x8Eb7620478F710089d11136571E18bd75ae32520"
-      abi: ZapLibrary
-      startBlock: 9130508
+      address: "0xe623305CC15792f4e3E4Cd8880B5B9D665976df5"
+      abi: ZapMaster
+      startBlock: 10424506
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.4
@@ -22,31 +22,35 @@ dataSources:
         - NonceSubmitted
         - OwnershipTransferred
       abis:
-        - name: ZapLibrary
-          file: ./abis/ZapLibrary.json
+        - name: ZapMaster
+          file: ./abis/ZapMaster.json
       eventHandlers:
-        - event: TipAdded(indexed address,indexed uint256,uint256,uint256)
-          handler: handleTipAdded
-        - event: DataRequested(indexed address,string,string,uint256,indexed uint256,uint256)
-          handler: handleDataRequested
-        - event: NewChallenge(bytes32,indexed uint256,uint256,uint256,string,uint256)
-          handler: handleNewChallenge
-        - event: NewRequestOnDeck(indexed uint256,string,bytes32,uint256)
-          handler: handleNewRequestOnDeck
+        # - event: TipAdded(indexed address,indexed uint256,uint256,uint256)
+        #   handler: handleTipAdded
+        # - event: DataRequested(indexed address,string,string,uint256,indexed uint256,uint256)
+        #   handler: handleDataRequested
+        # - event: NewChallenge(bytes32,indexed uint256,uint256,uint256,string,uint256)
+        #   topic0: '0x9e959738f09af22daede9ff9563f8edf3f5cec8e17ce60287c911c95fa767f42'
+        #   handler: handleNewChallenge
+        # - event: NewRequestOnDeck(indexed uint256,string,bytes32,uint256)
+        #   topic0: '0x5ab383fe3e28263c839564bc7545520a7dd34b78cbd7ab21b2da5d2fd027bf6c'
+        #   handler: handleNewRequestOnDeck
         - event: NewValue(indexed uint256,uint256,uint256,uint256,bytes32)
+          topic0: '0xc509d04e0782579ee59912139246ccbdf6c36c43abd90591d912017f3467dd16'
           handler: handleNewValue
         - event: NonceSubmitted(indexed address,string,indexed uint256,uint256,bytes32)
+          topic0: '0xe6d63a2aee0aaed2ab49702313ce54114f2145af219d7db30d6624af9e6dffc4'
           handler: handleNonceSubmitted
-        - event: OwnershipTransferred(indexed address,indexed address)
-          handler: handleOwnershipTransferred
+        # - event: OwnershipTransferred(indexed address,indexed address)
+        #   handler: handleOwnershipTransferred
       file: ./src/mapping.ts
   - kind: ethereum/contract
-    name: ZapDispute
+    name: Dispute
     network: chapel
     source:
-      address: "0xb1387CF1a1364B277FdeD5eB1460407Fc04E51E6"
-      abi: ZapDispute
-      startBlock: 9130455
+      address: "0xe623305CC15792f4e3E4Cd8880B5B9D665976df5"
+      abi: ZapMaster
+      startBlock: 10424506
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.4
@@ -57,8 +61,8 @@ dataSources:
         - DisputeVoteTallied
         - NewZapAddress
       abis:
-        - name: ZapDispute
-          file: ./abis/ZapDispute.json
+        - name: ZapMaster
+          file: ./abis/ZapMaster.json
       eventHandlers:
         - event: NewDispute(indexed uint256,indexed uint256,uint256,address)
           handler: handleNewDispute
@@ -71,9 +75,9 @@ dataSources:
     name: ZapMaster
     network: chapel
     source:
-      address: "0x1BDd5e115a59444F6e83AbDee1A85c126b3Df03D"
+      address: "0xe623305CC15792f4e3E4Cd8880B5B9D665976df5"
       abi: ZapMaster
-      startBlock: 9130603
+      startBlock: 10424506
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.4
@@ -91,19 +95,14 @@ dataSources:
     name: ZapOps
     network: chapel
     source:
-      address: "0x7C221756253E1d0f0818225aAeE7de0b754fA73e"
+      address: "0x4646939E9336139b16213B06EaCbA0a53b999f94"
       abi: ZapOps
-      startBlock: 9130579
+      startBlock: 10424502
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.4
       language: wasm/assemblyscript
       entities:
-        - NewDispute
-        - NewChallenge
-        - TipAdded
-        - NewRequestOnDeck
-        - DataRequested
         - Approval
         - Transfer
       abis:
@@ -112,17 +111,17 @@ dataSources:
       eventHandlers:
         - event: NewDispute(indexed uint256,indexed uint256,uint256,address)
           handler: handleNewDispute
-        - event: NewChallenge(bytes32,indexed uint256,uint256,uint256,string,uint256)
-          handler: handleNewChallenge
-        - event: TipAdded(indexed address,indexed uint256,uint256,uint256)
-          handler: handleTipAdded
-        - event: NewRequestOnDeck(indexed uint256,string,bytes32,uint256)
-          handler: handleNewRequestOnDeck
-        - event: DataRequested(indexed address,string,string,uint256,indexed uint256,uint256)
-          handler: handleDataRequested
-        - event: Approval(indexed address,indexed address,uint256)
-          handler: handleApproval
-        - event: Transfer(indexed address,indexed address,uint256)
-          handler: handleTransfer
+  #       # - event: NewChallenge(bytes32,indexed uint256,uint256,uint256,string,uint256)
+  #       #   handler: handleNewChallenge
+  #       # - event: TipAdded(indexed address,indexed uint256,uint256,uint256)
+  #       #   handler: handleTipAdded
+  #       # - event: NewRequestOnDeck(indexed uint256,string,bytes32,uint256)
+  #       #   handler: handleNewRequestOnDeck
+  #       # - event: DataRequested(indexed address,string,string,uint256,indexed uint256,uint256)
+  #       #   handler: handleDataRequested
+  #       # - event: Approval(indexed address,indexed address,uint256)
+  #       #   handler: handleApproval
+  #       # - event: Transfer(indexed address,indexed address,uint256)
+  #       #   handler: handleTransfer
       file: ./src/mapping.ts
 

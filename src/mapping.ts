@@ -1,32 +1,31 @@
 import { BigInt, log, Address } from "@graphprotocol/graph-ts";
 import {
-  ZapDispute,
   NewDispute,
   Voted,
   DisputeVoteTallied,
-} from "../generated/ZapDispute/ZapDispute";
+} from "../generated/Dispute/ZapMaster";
 import {
-  ZapLibrary,
+  ZapMaster,
   NewValue,
-  NonceSubmitted,
-} from "../generated/ZapLibrary/ZapLibrary"
-import {ZapMaster, NewZapAddress} from "../generated/ZapMaster/ZapMaster"
-import {ZapOps} from "../generated/ZapOps/ZapOps"
-import { Dispute, Vote, MiningEvent, MinerValue} from "../generated/schema";
+} from "../generated/Oracle/ZapMaster"
+import { NewZapAddress, NonceSubmitted } from "../generated/Oracle/ZapMaster"
+import { ZapOps} from "../generated/ZapOps/ZapOps"
+import { Dispute, Vote, MiningEvent, MinerValue } from "../generated/schema";
 
-let ZapMasterAddress = Address.fromString("0x1BDd5e115a59444F6e83AbDee1A85c126b3Df03D")
-let ZapOpsAddress = Address.fromString("0x7C221756253E1d0f0818225aAeE7de0b754fA73e")
+let ZapMasterAddress = Address.fromString("0xe623305CC15792f4e3E4Cd8880B5B9D665976df5")
+let ZapOpsAddress = Address.fromString("0x4646939E9336139b16213B06EaCbA0a53b999f94")
 
 // event NewValue(uint256[5] _requestId, uint256 _time, uint256[5] _value, uint256 _totalTips, bytes32 indexed _currentChallenge);
 export function handleNewValue(event: NewValue): void {
   let miningEventId = event.params._currentChallenge.toHex().concat("-event");
   // .concat(event.params._time.toString());
 
+
   let miningEvent = new MiningEvent(miningEventId);
   miningEvent.timestamp = event.block.timestamp;
-  miningEvent.requestIds.push(event.params._requestId)
+  miningEvent.requestId = event.params._requestId;
   miningEvent.time = event.params._time;
-  miningEvent.minedValues.push(event.params._value)
+  miningEvent.minedValue = event.params._value;
   miningEvent.totalTips = event.params._totalTips;
   miningEvent.currentChallenge = event.params._currentChallenge;
   miningEvent.blockNumber = event.block.number;
@@ -38,23 +37,26 @@ export function handleNewValue(event: NewValue): void {
 export function handleNonceSubmitted(event: NonceSubmitted): void {
   let valueId = event.params._currentChallenge
     .toHex()
-    .concat("-value-")
-    // .concat(event.params._requestId.toString())
-    // .concat("-")
+    .concat("-value")
     .concat(event.params._miner.toHexString());
 
   let miningEventId = event.params._currentChallenge.toHex().concat("-event");
-  // .concat("-event-")
-  // .concat(event.params._requestId.toString());
 
-  let value = new MinerValue(valueId);
+  let value = MinerValue.load(valueId);
+  if (value == null){
+    value = new MinerValue(valueId)
+  }
   value.timestamp = event.block.timestamp;
-  value.requestIds.push(event.params._requestId)
+  let requestIds = value.requestIds;
+  requestIds.push(event.params._requestId);
+  value.requestIds = requestIds;
   value.currentChallenge = event.params._currentChallenge;
   value.miningEvent = miningEventId;
   value.miningEventId = miningEventId;
   value.miner = event.params._miner;
-  value.values.push(event.params._value)
+  let values = value.values;
+  values.push(event.params._value);
+  value.values = values;
   value.blockNumber = event.block.number;
 
   value.save();

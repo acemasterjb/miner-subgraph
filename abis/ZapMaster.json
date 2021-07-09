@@ -381,8 +381,122 @@
   { "payable": true, "stateMutability": "payable", "type": "fallback" },
   {
     "anonymous": false,
+    "inputs": [
+      { "indexed": true, "name": "_disputeID", "type": "uint256" },
+      { "indexed": false, "name": "_result", "type": "int256" },
+      { "indexed": true, "name": "_reportedMiner", "type": "address" },
+      { "indexed": false, "name": "_reportingParty", "type": "address" },
+      { "indexed": false, "name": "_active", "type": "bool" }
+    ],
+    "name": "DisputeVoteTallied",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
     "inputs": [{ "indexed": false, "name": "_newZap", "type": "address" }],
     "name": "NewZapAddress",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      { "indexed": true, "name": "_sender", "type": "address" },
+      { "indexed": true, "name": "_requestId", "type": "uint256" },
+      { "indexed": false, "name": "_tip", "type": "uint256" },
+      { "indexed": false, "name": "_totalTips", "type": "uint256" }
+    ],
+    "name": "TipAdded",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      { "indexed": true, "name": "_sender", "type": "address" },
+      { "indexed": false, "name": "_query", "type": "string" },
+      { "indexed": false, "name": "_querySymbol", "type": "string" },
+      { "indexed": false, "name": "_granularity", "type": "uint256" },
+      { "indexed": true, "name": "_requestId", "type": "uint256" },
+      { "indexed": false, "name": "_totalTips", "type": "uint256" }
+    ],
+    "name": "DataRequested",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      { "indexed": false, "name": "_currentChallenge", "type": "bytes32" },
+      { "indexed": true, "name": "_currentRequestId", "type": "uint256" },
+      { "indexed": false, "name": "_difficulty", "type": "uint256" },
+      { "indexed": false, "name": "_multiplier", "type": "uint256" },
+      { "indexed": false, "name": "_query", "type": "string" },
+      { "indexed": false, "name": "_totalTips", "type": "uint256" }
+    ],
+    "name": "NewChallenge",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      { "indexed": true, "name": "_disputeId", "type": "uint256" },
+      { "indexed": true, "name": "_requestId", "type": "uint256" },
+      { "indexed": false, "name": "_timestamp", "type": "uint256" },
+      { "indexed": false, "name": "_miner", "type": "address" }
+    ],
+    "name": "NewDispute",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      { "indexed": true, "name": "_requestId", "type": "uint256" },
+      { "indexed": false, "name": "_query", "type": "string" },
+      { "indexed": false, "name": "_onDeckQueryHash", "type": "bytes32" },
+      { "indexed": false, "name": "_onDeckTotalTips", "type": "uint256" }
+    ],
+    "name": "NewRequestOnDeck",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      { "indexed": true, "name": "_requestId", "type": "uint256" },
+      { "indexed": false, "name": "_time", "type": "uint256" },
+      { "indexed": false, "name": "_value", "type": "uint256" },
+      { "indexed": false, "name": "_totalTips", "type": "uint256" },
+      { "indexed": false, "name": "_currentChallenge", "type": "bytes32" }
+    ],
+    "name": "NewValue",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      { "indexed": true, "name": "_miner", "type": "address" },
+      { "indexed": false, "name": "_nonce", "type": "string" },
+      { "indexed": true, "name": "_requestId", "type": "uint256" },
+      { "indexed": false, "name": "_value", "type": "uint256" },
+      { "indexed": false, "name": "_currentChallenge", "type": "bytes32" }
+    ],
+    "name": "NonceSubmitted",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      { "indexed": true, "name": "_previousOwner", "type": "address" },
+      { "indexed": true, "name": "_newOwner", "type": "address" }
+    ],
+    "name": "OwnershipTransferred",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      { "indexed": true, "name": "_disputeID", "type": "uint256" },
+      { "indexed": false, "name": "_position", "type": "bool" },
+      { "indexed": true, "name": "_voter", "type": "address" }
+    ],
+    "name": "Voted",
     "type": "event"
   }
 ]

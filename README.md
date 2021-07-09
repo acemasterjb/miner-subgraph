@@ -45,3 +45,12 @@ Unless there are changes you'd like to make to the following files:
 npm run deploy
 ```
 
+## Checking logs for errors
+
+BSC Testnet subgraphs don't show much logging info on The Graph explorer. You can however make a curl request to query for errors
+
+```bash
+curl --location --request POST 'https://api.thegraph.com/index-node/graphql'  --data-raw '{"query":"{ indexingStatusForCurrentVersion(subgraphName: \"pynchmeister/nft-marketplace\") { subgraph fatalError { message } nonFatalErrors {message } } }"}'
+```
+
+for more logging queries you can run in curl, [see this document](/debugging.mg)

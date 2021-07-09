@@ -1,20 +1,13 @@
-# type ExampleEntity @entity {
-#   id: ID!
-#   count: BigInt!
-#   _disputeId: BigInt! # uint256
-#   _requestId: BigInt! # uint256
-# }
-
 type MiningEvent @entity {
   id: ID!
   timestamp: BigInt
-  requestIds: [BigInt!]!
+  requestId: BigInt!
   time: BigInt!
-  minedValues: [BigInt!]
+  minedValue: BigInt
   totalTips: BigInt!
   currentChallenge: Bytes!
   blockNumber: BigInt!
-  minerValues: [MinerValue!]
+  minerValues: [MinerValue!] @derivedFrom(field: "miningEvent")
 }
 
 type MinerValue @entity {

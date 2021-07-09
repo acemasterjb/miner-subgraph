@@ -1,0 +1,2 @@
+curl --location --request POST 'https://api.thegraph.com/index-node/graphql'  --data-raw '{"query":"{ indexingStatusForPendingVersion(subgraphName: \"SUBGRAPH_ENTRY\") { subgraph fatalError { message } nonFatalErrors {message } } }"}'
+curl --location --request POST 'https://api.thegraph.com/index-node/graphql'  --data-raw '{"query":"{ indexingStatusForPendingVersion(subgraphName: \"SUBGRAPH_ENTRY\") { subgraph fatalError { message } nonFatalErrors {message } } }"}'
